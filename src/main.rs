@@ -5,7 +5,7 @@ fn main() {
 
     let start = std::time::Instant::now();
 
-    let result = days::day3::part2(input);
+    let result = days::day4::part1(input);
 
     let duration = start.elapsed();
 
