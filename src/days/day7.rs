@@ -9,35 +9,28 @@ pub fn part1(input: &str) -> u64 {
 
         // Rest of the lines
         for line in line_iter {
-            let mut s = 0;
-            println!("{mask:?}");
             if !line.contains('^'){
                 continue;
             }
 
             line.chars().enumerate().for_each(|(i, c)| {
-                if c != '^' {
+                if !(c == '^' &&  mask[i] == 1) {
                     return;
                 }
 
-                if i > 0 && mask[i-1] != 1{
+                if i > 0 {
                     mask[i-1] = 1;
-                    s += 1;
                 }
 
                 mask[i] = 0;
+                splits += 1;
+
 
                 if i < mask.len()-1 {
                     mask[i+1] = 1;
-                    s += 1;
                 }
             });
-
-            println!(" => {s}");
-            splits += s;
         }
-        println!("{mask:?}");
-
     }
 
     splits
